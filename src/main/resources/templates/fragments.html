@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <a
+      th:fragment="button(link, title)"
+      th:href="${link}"
+      th:text="${title}"
+    ></a>
+
+    <th:block th:fragment="styles">
+      <link
+        th:href="@{/webjars/bootstrap/5.3.8/css/bootstrap.min.css}"
+        rel="stylesheet"
+      />
+      <link th:href="@{/css/app.css}" rel="stylesheet" />
+    </th:block>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" th:fragment="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Best of</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/movies"
+                >Movies</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/songs">Songs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- card list  -->
+    <!-- fragments.html -->
+    <div class="d-flex justify-content-center" th:fragment="card-list(list)">
+      <div class="card" style="width: 18rem">
+        <ul class="list-group list-group-flush">
+          <li
+            class="list-group-item"
+            th:each="object : ${list}"
+            th:text="${object.title}"
+          ></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

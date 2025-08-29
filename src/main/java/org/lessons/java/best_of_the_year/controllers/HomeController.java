@@ -48,16 +48,16 @@ public class HomeController {
     @GetMapping("/movies")
     public String movies(Model model){
 
-        StringBuilder movieTitles = new StringBuilder();
-       for (Movie movie : getBestMovies()) {
-        if(movieTitles.length() > 0){
-            movieTitles.append(", ");
+    // StringBuilder movieTitles = new StringBuilder();
+    //    for (Movie movie : getBestMovies()) {
+    //     if(movieTitles.length() > 0){
+    //         movieTitles.append(", ");
 
-        }
-        movieTitles.append(movie.getTitle());
-       }
+    //     }
+    //     movieTitles.append(movie.getTitle());
+    //    }
 
-       model.addAttribute("movieTitles", movieTitles.toString());
+       model.addAttribute("movies", getBestMovies());
 
 
     return "movies";
@@ -66,17 +66,17 @@ public class HomeController {
     @GetMapping("/songs")
     public String songs(Model model){
 
-        StringBuilder songTitles = new StringBuilder();
+        // StringBuilder songTitles = new StringBuilder();
 
-        for (Song song : getBestSongs()) {
+        // for (Song song : getBestSongs()) {
 
-            if(songTitles.length() > 0){
-                songTitles.append(", ");
-            }
-            songTitles.append(song.getTitle());
-        }
+        //     if(songTitles.length() > 0){
+        //         songTitles.append(", ");
+        //     }
+        //     songTitles.append(song.getTitle());
+        // }
 
-        model.addAttribute("songTitles", songTitles.toString());
+        model.addAttribute("songs", getBestSongs());
 
     return "songs";
     }

@@ -37,7 +37,10 @@ public class Song implements Serializable{
         this.title = title;
     }
 
-    
+    @Override
+    public String toString() {
+        return "id: " + id + ", title: " + title;
+    }
 
 
 }

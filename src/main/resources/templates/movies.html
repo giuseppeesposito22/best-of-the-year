@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <th:block th:replace="~{fragments :: styles}"></th:block>
+  </head>
   <body>
-    <h1>The best Films</h1>
+    <div th:insert="~{fragments :: navbar}"></div>
 
-    <h2 th:text="${movieTitles}" />
+    <div class="container">
+      <h1 class="text-center my-3">Best Movies</h1>
+
+      <div class="d-flex justify-content-center">
+        <div class="card" style="width: 18rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" th:each="movie : ${movies}">
+              <a
+                th:href="@{'/movie/' + ${movie.id}}"
+                th:text="${movie.title}"
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
